@@ -7,7 +7,8 @@ const app = express();
 const cors = require('cors');
 const mongoose = require("mongoose");
 
-app.set('view engine', 'jade');
+// app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 app.use(cors());
 app.use(cookieParser());
 
@@ -67,7 +68,7 @@ app.get('/token/:address', async (req, res) => {
   
 });
 
-app.get('/login', async (req, res) => {
+app.get('/auth/login', async (req, res) => {
   // Get OAuth 2 client.
   const client = res.app.get('client');
 
@@ -131,17 +132,12 @@ app.get('/callback', async (req, res) => {
   res.redirect(`/${req.cookies.address}`);
 });
 
-app.get('/:address', (req, res) => {
-  
+app.get('/auth/:address', (req, res) => {
   const address = req.params.address;
-  if(address != "favicon.ico"){
-  console.log("Line 180" + address);
+  console.log("Line 138" + address);
   res.cookie("address",address);
   // console.log(req.cookies.jwtS);
-  res.render('index', {
-    address
-  });
-}
+  res.render('index', {name:address});
 });
 
 app.listen(3000, () => {
