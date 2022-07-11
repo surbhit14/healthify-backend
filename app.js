@@ -9,8 +9,10 @@ const mongoose = require("mongoose");
 
 // app.set('view engine', 'jade');
 app.set('view engine', 'ejs');
+app.use(express.static("public"));
 app.use(cors());
 app.use(cookieParser());
+
 
 app.use(session({
   secret: "Tottenham Sucks.",
@@ -134,7 +136,7 @@ app.get('/callback', async (req, res) => {
 
 app.get('/auth/:address', (req, res) => {
   const address = req.params.address;
-  console.log("Line 138" + address);
+  console.log("Line 138 " + address);
   res.cookie("address",address);
   // console.log(req.cookies.jwtS);
   res.render('index', {name:address});

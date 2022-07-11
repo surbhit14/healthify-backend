@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/bg-glass.jpg");
+    background-image: url("../images/bg-glass.jpg");
   }
   
   .glass {
@@ -24,12 +24,4 @@ body {
     margin-top: 100px;
     font-size: 5px;
   }
-
-  h1{
-    text-align: center;
-  }
-
-  section.mb-5.d-flex.flex-column.align-items-start.justify-content-center.text-white.container {
-    height: 100%;
-}
   
