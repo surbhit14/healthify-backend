@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/index.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load2.css" />
+    <section class="mb-5 d-flex flex-column align-items-start justify-content-center text-white  container">
+
+        <div class="section glass w-100">
+            <div class="p-5">
+                <h1 class="h1 fw-bold" text-align: center;>Scan successful</h1>
+                <br>
+                <br>
+                <div class=" w-100">
+                    <button class="btn shadow btn-warning fw-bold p-3 w-100" onclick="return close();">
+                        Close this window
+                    </button>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+    </section>
+
+<script>
+    function close() {
+        let new_window = open(location, '_self');
+		new_window.close();
+		return false;
+}
+</script>
+
+
+

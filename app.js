@@ -70,6 +70,8 @@ app.get('/token/:address', async (req, res) => {
   
 });
 
+
+
 app.get('/auth/login', async (req, res) => {
   // Get OAuth 2 client.
   const client = res.app.get('client');
@@ -131,7 +133,7 @@ app.get('/callback', async (req, res) => {
       console.log(e.message);
     } 
 
-  res.redirect(`/${req.cookies.address}`);
+  res.redirect(`/success/${req.cookies.address}`);
 });
 
 app.get('/auth/:address', (req, res) => {
@@ -140,6 +142,13 @@ app.get('/auth/:address', (req, res) => {
   res.cookie("address",address);
   // console.log(req.cookies.jwtS);
   res.render('index', {name:address});
+});
+
+app.get('/success/:address', (req, res) => {
+  const address = req.params.address;
+  console.log("Line 149 " + address);
+  res.cookie("address",address);
+  res.render('success', {name:address});
 });
 
 app.listen(3000, () => {
