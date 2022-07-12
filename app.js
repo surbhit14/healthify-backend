@@ -7,7 +7,6 @@ const app = express();
 const cors = require('cors');
 const mongoose = require("mongoose");
 
-// app.set('view engine', 'jade');
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(cors());
@@ -138,17 +137,15 @@ app.get('/callback', async (req, res) => {
 
 app.get('/auth/:address', (req, res) => {
   const address = req.params.address;
-  console.log("Line 138 " + address);
   res.cookie("address",address);
   // console.log(req.cookies.jwtS);
-  res.render('index', {name:address});
+  res.render('index');
 });
 
 app.get('/success/:address', (req, res) => {
   const address = req.params.address;
-  console.log("Line 149 " + address);
   res.cookie("address",address);
-  res.render('success', {name:address});
+  res.render('success');
 });
 
 app.listen(3000, () => {
