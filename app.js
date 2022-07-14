@@ -52,15 +52,11 @@ app.use(async (req, res, next) => {
 
 app.get('/token/:address', async (req, res) => {
   const addr = req.params.address;
-  console.log("Line 67 " + addr);
   const user = await User.find(
     {
       address: addr
     })
 
-    console.log(user);
-    console.log(user[0].faceId);
- 
     return res.json(
       {
           id:user[0].faceId
@@ -68,8 +64,6 @@ app.get('/token/:address', async (req, res) => {
       );
   
 });
-
-
 
 app.get('/auth/login', async (req, res) => {
   // Get OAuth 2 client.
@@ -114,8 +108,6 @@ app.get('/callback', async (req, res) => {
   const tokenSet = await client.callback('http://localhost:3000/callback', params, { state: 'some-state', code_verifier: codeVerifier });
   // Save JWT.
   res.cookie('jwtSet', tokenSet, { maxAge: 360000 });
-  console.log(req.cookies.address);
-  console.log(tokenSet.access_token);
   var decoded = jwt_decode(tokenSet.access_token);
   // Redirect end-user to root route.
   
@@ -138,7 +130,6 @@ app.get('/callback', async (req, res) => {
 app.get('/auth/:address', (req, res) => {
   const address = req.params.address;
   res.cookie("address",address);
-  // console.log(req.cookies.jwtS);
   res.render('index');
 });
 
