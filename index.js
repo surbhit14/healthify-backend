@@ -39,7 +39,7 @@ app.use(async (req, res, next) => {
     const client = new humanodeIssuer.Client({
       client_id: 'hackathon-participant',
       client_secret: 'q4_GkveX47i3M9wYXSkU5CKn3h',
-      redirect_uris: ['http://localhost:3000/callback'],
+      redirect_uris: ['http://healthify-backend.vercel.app/callback'],
       response_types: ['code'],
       token_endpoint_auth_method: 'client_secret_post'
     });
@@ -105,7 +105,7 @@ app.get('/callback', async (req, res) => {
   }
 
   // Exchange auth code for JWT token.
-  const tokenSet = await client.callback('http://localhost:3000/callback', params, { state: 'some-state', code_verifier: codeVerifier });
+  const tokenSet = await client.callback('http://healthify-backend.vercel.app/callback', params, { state: 'some-state', code_verifier: codeVerifier });
   // Save JWT.
   res.cookie('jwtSet', tokenSet, { maxAge: 360000 });
   var decoded = jwt_decode(tokenSet.access_token);
